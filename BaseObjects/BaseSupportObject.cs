@@ -2,153 +2,156 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseSupportObject
+namespace iffnsStuff.iffnsBaseSystemForUnity
 {
-    private IBaseObject linkedBaseObject;
-    public IBaseObject LinkedBaseObject
+    public class BaseSupportObject
     {
-        get
+        private IBaseObject linkedBaseObject;
+        public IBaseObject LinkedBaseObject
         {
-            return linkedBaseObject;
-        }
-    }
-
-    //Hierarchy stuff
-    IBaseObject superObject;
-    public IBaseObject SuperObject
-    {
-        get
-        {
-            return superObject;
-        }
-    }
-
-    //List<IBaseObject> subObjects;
-    public List<IBaseObject> SubObjects
-    {
-        get
-        {
-            return Mailbox.SubObjects;
-
-            //return subObjects;
-        }
-    }
-
-    public enum HierarchyTypes
-    {
-        Bottom,
-        Middle,
-        Top,
-        Single
-    }
-
-    public HierarchyTypes HierarchyType
-    {
-        get
-        {
-            if (SuperObject == null)
+            get
             {
-                if (SubObjects.Count == 0)
+                return linkedBaseObject;
+            }
+        }
+
+        //Hierarchy stuff
+        IBaseObject superObject;
+        public IBaseObject SuperObject
+        {
+            get
+            {
+                return superObject;
+            }
+        }
+
+        //List<IBaseObject> subObjects;
+        public List<IBaseObject> SubObjects
+        {
+            get
+            {
+                return Mailbox.SubObjects;
+
+                //return subObjects;
+            }
+        }
+
+        public enum HierarchyTypes
+        {
+            Bottom,
+            Middle,
+            Top,
+            Single
+        }
+
+        public HierarchyTypes HierarchyType
+        {
+            get
+            {
+                if (SuperObject == null)
                 {
-                    return HierarchyTypes.Single;
+                    if (SubObjects.Count == 0)
+                    {
+                        return HierarchyTypes.Single;
+                    }
+                    else
+                    {
+                        return HierarchyTypes.Top;
+                    }
                 }
                 else
                 {
-                    return HierarchyTypes.Top;
+                    if (SubObjects.Count == 0)
+                    {
+                        return HierarchyTypes.Bottom;
+                    }
+                    else
+                    {
+                        return HierarchyTypes.Middle;
+                    }
                 }
             }
-            else
+        }
+
+
+        //Mailbox System
+        Mailbox mailbox;
+        public Mailbox Mailbox
+        {
+            get
             {
-                if (SubObjects.Count == 0)
-                {
-                    return HierarchyTypes.Bottom;
-                }
-                else
-                {
-                    return HierarchyTypes.Middle;
-                }
+                return mailbox;
             }
         }
-    }
 
+        //Build parameters
+        protected MailboxLineString buildParameterName;
 
-    //Mailbox System
-    Mailbox mailbox;
-    public Mailbox Mailbox
-    {
-        get
+        public string Name
         {
-            return mailbox;
-        }
-    }
-
-    //Build parameters
-    protected MailboxLineString buildParameterName;
-
-    public string Name
-    {
-        get
-        {
-            return buildParameterName.Val;
-        }
-        set
-        {
-            buildParameterName.Val = value;
-        }
-    }
-
-    //Save and load system
-    public List<string> JSONBuildParameters
-    {
-        get
-        {
-            return Mailbox.JSONBuildParameters;
+            get
+            {
+                return buildParameterName.Val;
+            }
+            set
+            {
+                buildParameterName.Val = value;
+            }
         }
 
-        set
+        //Save and load system
+        public List<string> JSONBuildParameters
         {
-            Mailbox.JSONBuildParameters = value;
+            get
+            {
+                return Mailbox.JSONBuildParameters;
+            }
+
+            set
+            {
+                Mailbox.JSONBuildParameters = value;
+            }
         }
-    }
 
-    //Edit Button Functions
-    List<BaseEditButtonFunction> editButtonFunctions;
+        //Edit Button Functions
+        List<BaseEditButtonFunction> editButtonFunctions;
 
-    public List<BaseEditButtonFunction> EditButtonFunctions
-    {
-        get
+        public List<BaseEditButtonFunction> EditButtonFunctions
         {
-            return new List<BaseEditButtonFunction>(editButtonFunctions);
+            get
+            {
+                return new List<BaseEditButtonFunction>(editButtonFunctions);
+            }
         }
-    }
 
-    public void AddEditButtonFunctionToBeginning(BaseEditButtonFunction function)
-    {
-        editButtonFunctions.Insert(index: 0, item: function);
-    }
+        public void AddEditButtonFunctionToBeginning(BaseEditButtonFunction function)
+        {
+            editButtonFunctions.Insert(index: 0, item: function);
+        }
 
-    public void AddEditButtonFunctionToEnd(BaseEditButtonFunction function)
-    {
-        editButtonFunctions.Add(item: function);
-    }
+        public void AddEditButtonFunctionToEnd(BaseEditButtonFunction function)
+        {
+            editButtonFunctions.Add(item: function);
+        }
 
-    public void ResetEditButtons()
-    {
-        editButtonFunctions.Clear();
-    }
+        public void ResetEditButtons()
+        {
+            editButtonFunctions.Clear();
+        }
 
-    //Constructor
-    public BaseSupportObject(IBaseObject baseObject, string name, IBaseObject superObject)
-    {
-        this.linkedBaseObject = baseObject;
+        //Constructor
+        public BaseSupportObject(IBaseObject baseObject, string name, IBaseObject superObject)
+        {
+            linkedBaseObject = baseObject;
 
-        //Create mailbox objects
-        mailbox = new Mailbox(linkedBaseObject);
-        //subObjects = new List<IBaseObject>();
-        this.superObject = superObject;
+            //Create mailbox objects
+            mailbox = new Mailbox(linkedBaseObject);
+            //subObjects = new List<IBaseObject>();
+            this.superObject = superObject;
 
-        buildParameterName = new MailboxLineString("Name", Mailbox, Mailbox.ValueType.buildParameter);
+            buildParameterName = new MailboxLineString("Name", Mailbox, Mailbox.ValueType.buildParameter);
 
-        editButtonFunctions = new List<BaseEditButtonFunction>();
+            editButtonFunctions = new List<BaseEditButtonFunction>();
+        }
     }
 }

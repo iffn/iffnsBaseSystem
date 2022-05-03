@@ -2,39 +2,42 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ColorLibraryIntegrator : MonoBehaviour
+namespace iffnsStuff.iffnsBaseSystemForUnity
 {
-    public Color ModificationNodeObjectMoverColor;
-    public Color ModificationNodeSizeAdjusterColor;
-
-    public void Setup()
+    public class ColorLibraryIntegrator : MonoBehaviour
     {
-        ColorLibrary.Setp(integrator: this);
-    }
-}
+        public Color ModificationNodeObjectMoverColor;
+        public Color ModificationNodeSizeAdjusterColor;
 
-public static class ColorLibrary
-{
-    static ColorLibraryIntegrator integrator;
-
-    public static void Setp(ColorLibraryIntegrator integrator)
-    {
-        ColorLibrary.integrator = integrator;
-    }
-
-    public static Color ModificationNodeObjectMoverColor
-    {
-        get
+        public void Setup()
         {
-            return integrator.ModificationNodeObjectMoverColor;
+            ColorLibrary.Setp(integrator: this);
         }
     }
 
-    public static Color ModificationNodeSizeAdjusterColor
+    public static class ColorLibrary
     {
-        get
+        static ColorLibraryIntegrator integrator;
+
+        public static void Setp(ColorLibraryIntegrator integrator)
         {
-            return integrator.ModificationNodeSizeAdjusterColor;
+            ColorLibrary.integrator = integrator;
+        }
+
+        public static Color ModificationNodeObjectMoverColor
+        {
+            get
+            {
+                return integrator.ModificationNodeObjectMoverColor;
+            }
+        }
+
+        public static Color ModificationNodeSizeAdjusterColor
+        {
+            get
+            {
+                return integrator.ModificationNodeSizeAdjusterColor;
+            }
         }
     }
 }

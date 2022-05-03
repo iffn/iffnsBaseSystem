@@ -2,30 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class BaseEditButtonFunction
+namespace iffnsStuff.iffnsBaseSystemForUnity
 {
-    public string ButtonName { get; }
-
-    public delegate void ButtonFunction();
-
-    public ButtonFunction Function { get; }
-
-    protected BaseEditButtonFunction(string buttonName, ButtonFunction buttonFunction)
+    public abstract class BaseEditButtonFunction
     {
-        this.ButtonName = buttonName;
-        this.Function = buttonFunction;
+        public string ButtonName { get; }
 
-        AdditionalFunctions = new List<ButtonFunction>();
+        public delegate void ButtonFunction();
+
+        public ButtonFunction Function { get; }
+
+        protected BaseEditButtonFunction(string buttonName, ButtonFunction buttonFunction)
+        {
+            this.ButtonName = buttonName;
+            this.Function = buttonFunction;
+
+            AdditionalFunctions = new List<ButtonFunction>();
+        }
+
+        List<ButtonFunction> AdditionalFunctions;
     }
 
-    List<ButtonFunction> AdditionalFunctions;
-}
-
-public class SingleButtonBaseEditFunction : BaseEditButtonFunction
-{
-    public SingleButtonBaseEditFunction(string buttonName, ButtonFunction buttonFunction) : base(buttonName: buttonName, buttonFunction: buttonFunction)
+    public class SingleButtonBaseEditFunction : BaseEditButtonFunction
     {
+        public SingleButtonBaseEditFunction(string buttonName, ButtonFunction buttonFunction) : base(buttonName: buttonName, buttonFunction: buttonFunction)
+        {
 
+        }
     }
 }
-

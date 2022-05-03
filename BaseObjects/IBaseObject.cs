@@ -2,35 +2,38 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IBaseObject
+namespace iffnsStuff.iffnsBaseSystemForUnity
 {
-    //Attributes
-    string IdentifierString { get; }
+    public interface IBaseObject
+    {
+        //Attributes
+        string IdentifierString { get; }
 
-    IBaseObject SuperObject { get; }
+        IBaseObject SuperObject { get; }
 
-    List<IBaseObject> SubObjects { get; }
+        List<IBaseObject> SubObjects { get; }
 
-    List<string> JSONBuildParameters { get; set; }
+        List<string> JSONBuildParameters { get; set; }
 
-    string Name { get; set; }
+        string Name { get; set; }
 
-    List<MailboxLineSingle> SingleMailboxLines { get; }
+        List<MailboxLineSingle> SingleMailboxLines { get; }
 
-    List<BaseEditButtonFunction> EditButtons { get; }
+        List<BaseEditButtonFunction> EditButtons { get; }
 
-    //Functions
-    void ApplyBuildParameters();
+        //Functions
+        void ApplyBuildParameters();
 
-    void Setup(IBaseObject superObject);
+        void Setup(IBaseObject superObject);
 
-    void PlaytimeUpdate();
+        void PlaytimeUpdate();
 
-    void InternalUpdate();
+        void InternalUpdate();
 
-    void ResetObject();
+        void ResetObject();
 
-    void DestroyObject();
+        void DestroyObject();
 
-    void RemoveSubObject(IBaseObject subObject);
+        void RemoveSubObject(IBaseObject subObject);
+    }
 }

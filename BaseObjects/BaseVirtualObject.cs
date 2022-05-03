@@ -2,177 +2,180 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class BaseVirtualObject : IBaseObject
+namespace iffnsStuff.iffnsBaseSystemForUnity
 {
-    BaseSupportObject baseSupportObject;
-
-    public abstract string IdentifierString { get; }
-
-    protected Mailbox CurrentMailbox
+    public abstract class BaseVirtualObject : IBaseObject
     {
-        get
+        BaseSupportObject baseSupportObject;
+
+        public abstract string IdentifierString { get; }
+
+        protected Mailbox CurrentMailbox
         {
-            return baseSupportObject.Mailbox;
-        }
-    }
-
-    public List<MailboxLineSingle> SingleMailboxLines
-    {
-        get
-        {
-            return CurrentMailbox.SingleMailboxLines;
-        }
-    }
-
-    public string Name
-    {
-        get
-        {
-            return baseSupportObject.Name;
-        }
-        set
-        {
-            baseSupportObject.Name = value;
-        }
-    }
-
-    public IBaseObject SuperObject
-    {
-        get
-        {
-            return baseSupportObject.SuperObject;
-        }
-    }
-
-    public List<IBaseObject> SubObjects
-    {
-        get
-        {
-            return baseSupportObject.SubObjects;
-        }
-    }
-
-    //Save and load system
-    public List<string> JSONBuildParameters
-    {
-        get
-        {
-            List<string> returnValue = new List<string>();
-
-
-
-            returnValue.AddRange(baseSupportObject.JSONBuildParameters);
-
-            foreach (IBaseObject subObject in SubObjects)
+            get
             {
-                returnValue.AddRange(subObject.JSONBuildParameters);
+                return baseSupportObject.Mailbox;
+            }
+        }
+
+        public List<MailboxLineSingle> SingleMailboxLines
+        {
+            get
+            {
+                return CurrentMailbox.SingleMailboxLines;
+            }
+        }
+
+        public string Name
+        {
+            get
+            {
+                return baseSupportObject.Name;
+            }
+            set
+            {
+                baseSupportObject.Name = value;
+            }
+        }
+
+        public IBaseObject SuperObject
+        {
+            get
+            {
+                return baseSupportObject.SuperObject;
+            }
+        }
+
+        public List<IBaseObject> SubObjects
+        {
+            get
+            {
+                return baseSupportObject.SubObjects;
+            }
+        }
+
+        //Save and load system
+        public List<string> JSONBuildParameters
+        {
+            get
+            {
+                List<string> returnValue = new List<string>();
+
+
+
+                returnValue.AddRange(baseSupportObject.JSONBuildParameters);
+
+                foreach (IBaseObject subObject in SubObjects)
+                {
+                    returnValue.AddRange(subObject.JSONBuildParameters);
+                }
+
+                return baseSupportObject.JSONBuildParameters;
             }
 
-            return baseSupportObject.JSONBuildParameters;
+            set
+            {
+                baseSupportObject.JSONBuildParameters = value;
+            }
         }
 
-        set
+        //Constructor
+        public BaseVirtualObject(IBaseObject superObject)
         {
-            baseSupportObject.JSONBuildParameters = value;
+            Setup(superObject);
         }
-    }
 
-    //Constructor
-    public BaseVirtualObject(IBaseObject superObject)
-    {
-        Setup(superObject);
-    }
-
-    //Base Functions
-    public void Setup(IBaseObject superObject)
-    {
-        if (baseSupportObject == null)
+        //Base Functions
+        public void Setup(IBaseObject superObject)
         {
-            baseSupportObject = new BaseSupportObject(baseObject: this, name: "", superObject: superObject);
+            if (baseSupportObject == null)
+            {
+                baseSupportObject = new BaseSupportObject(baseObject: this, name: "", superObject: superObject);
+            }
         }
-    }
 
-    virtual protected void SetBaseBuildParameters(string name)
-    {
-        baseSupportObject.Name = name;
-    }
-
-    public abstract void ApplyBuildParameters();
-
-    public abstract void PlaytimeUpdate();
-
-    public abstract void InternalUpdate();
-
-    protected void NonOrderedApplyBuildParameters()
-    {
-        foreach (IBaseObject subObject in SubObjects)
+        virtual protected void SetBaseBuildParameters(string name)
         {
-            subObject.ApplyBuildParameters();
+            baseSupportObject.Name = name;
         }
-    }
 
-    protected void NonOrderedPlaytimeUpdate()
-    {
-        foreach (IBaseObject subObject in SubObjects)
+        public abstract void ApplyBuildParameters();
+
+        public abstract void PlaytimeUpdate();
+
+        public abstract void InternalUpdate();
+
+        protected void NonOrderedApplyBuildParameters()
         {
-            subObject.PlaytimeUpdate();
+            foreach (IBaseObject subObject in SubObjects)
+            {
+                subObject.ApplyBuildParameters();
+            }
         }
-    }
 
-    protected void NonOrderedInternalUpdate()
-    {
-        foreach (IBaseObject subObject in SubObjects)
+        protected void NonOrderedPlaytimeUpdate()
         {
-            subObject.InternalUpdate();
+            foreach (IBaseObject subObject in SubObjects)
+            {
+                subObject.PlaytimeUpdate();
+            }
         }
-    }
 
-    public void RemoveSubObject(IBaseObject subObject)
-    {
-        CurrentMailbox.RemoveSubObject(subObject);
-    }
-
-    public virtual void DestroyObject()
-    {
-        foreach (IBaseObject subObject in SubObjects)
+        protected void NonOrderedInternalUpdate()
         {
-            subObject.DestroyObject();
+            foreach (IBaseObject subObject in SubObjects)
+            {
+                subObject.InternalUpdate();
+            }
         }
 
-        SuperObject.RemoveSubObject(this);
-    }
-
-    public abstract void ResetObject();
-
-    protected void baseReset()
-    {
-        foreach (IBaseObject subObject in SubObjects)
+        public void RemoveSubObject(IBaseObject subObject)
         {
-            subObject.DestroyObject(); //Also removes reference in super object but is somewhat slow since it first needs to find itself
+            CurrentMailbox.RemoveSubObject(subObject);
         }
-    }
 
-    //Edit Button Functions
-    public List<BaseEditButtonFunction> EditButtons
-    {
-        get
+        public virtual void DestroyObject()
         {
-            return baseSupportObject.EditButtonFunctions;
+            foreach (IBaseObject subObject in SubObjects)
+            {
+                subObject.DestroyObject();
+            }
+
+            SuperObject.RemoveSubObject(this);
         }
-    }
 
-    protected void AddEditButtonFunctionToBeginning(BaseEditButtonFunction function)
-    {
-        baseSupportObject.AddEditButtonFunctionToBeginning(function);
-    }
+        public abstract void ResetObject();
 
-    protected void AddEditButtonFunctionToEnd(BaseEditButtonFunction function)
-    {
-        baseSupportObject.AddEditButtonFunctionToEnd(function);
-    }
+        protected void baseReset()
+        {
+            foreach (IBaseObject subObject in SubObjects)
+            {
+                subObject.DestroyObject(); //Also removes reference in super object but is somewhat slow since it first needs to find itself
+            }
+        }
 
-    protected void ResetEditButtons()
-    {
-        ResetEditButtons();
+        //Edit Button Functions
+        public List<BaseEditButtonFunction> EditButtons
+        {
+            get
+            {
+                return baseSupportObject.EditButtonFunctions;
+            }
+        }
+
+        protected void AddEditButtonFunctionToBeginning(BaseEditButtonFunction function)
+        {
+            baseSupportObject.AddEditButtonFunctionToBeginning(function);
+        }
+
+        protected void AddEditButtonFunctionToEnd(BaseEditButtonFunction function)
+        {
+            baseSupportObject.AddEditButtonFunctionToEnd(function);
+        }
+
+        protected void ResetEditButtons()
+        {
+            ResetEditButtons();
+        }
     }
 }
