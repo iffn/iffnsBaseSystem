@@ -7,7 +7,21 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
 {
     public class MaterialLibraryIntegrator : MonoBehaviour
     {
-        public List<MaterialLibraryExtenderTemplate> LibraryExtenders;
+        public List<MaterialLibraryExtenderTemplate> LibraryExtendersForUser;
+        public List<MaterialLibraryExtenderTemplate> OtherLibraryExtenders;
+
+        public List<MaterialLibraryExtenderTemplate> LibraryExtenders
+        {
+            get
+            {
+                List <MaterialLibraryExtenderTemplate> returnList = new List < MaterialLibraryExtenderTemplate >();
+
+                returnList.AddRange(LibraryExtendersForUser);
+                returnList.AddRange(OtherLibraryExtenders);
+
+                return returnList;
+            }
+        }
 
         public void Setup()
         {
@@ -66,6 +80,30 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
 
             Debug.LogWarning("Warning: Material manager not found with identifier = " + identifier);
             return null;
+        }
+
+        public static List<MaterialLibraryExtenderTemplate> AllLibraryExtendersForUser
+        {
+            get
+            {
+                return LibraryIntegrator.LibraryExtendersForUser;
+            }
+        }
+
+        public static List<MaterialLibraryExtenderTemplate> AllOtherLbraryExtenders
+        {
+            get
+            {
+                return LibraryIntegrator.OtherLibraryExtenders;
+            }
+        }
+
+        public static List<MaterialLibraryExtenderTemplate> AllLibraryExtenders
+        {
+            get
+            {
+                return LibraryIntegrator.LibraryExtenders;
+            }
         }
 
         public static List<MaterialManager> AllMaterialManagers
