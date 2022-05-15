@@ -38,7 +38,13 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
             }
         }
 
-        public abstract string IdentifierString { get; }
+        public string IdentifierString
+        {
+            get
+            {
+                return this.GetType().Name;
+            }
+        }
 
         public string Name
         {

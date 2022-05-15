@@ -8,7 +8,13 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
     {
         BaseSupportObject baseSupportObject;
 
-        public abstract string IdentifierString { get; }
+        public string IdentifierString
+        {
+            get
+            {
+                return this.GetType().Name;
+            }
+        }
 
         protected Mailbox CurrentMailbox
         {

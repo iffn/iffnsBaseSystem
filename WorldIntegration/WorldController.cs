@@ -9,16 +9,6 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
         [SerializeField] ColorLibraryIntegrator CurrentColorLibraryIntegrator = null;
         [SerializeField] UnityPrefabLibaryIntegrator CurrentUnityPrefabLibaryIntegrator = null;
 
-        public static string identifierString = "World object";
-
-        public override string IdentifierString
-        {
-            get
-            {
-                return identifierString;
-            }
-        }
-
         public override void PlaytimeUpdate()
         {
             NonOrderedPlaytimeUpdate();
