@@ -27,6 +27,7 @@ public class FileUpgraderTest : MonoBehaviour
     void Run()
     {
         string inputFolder = Path.Combine(Application.streamingAssetsPath, "Buildings");
+        inputFolder = Path.Combine(inputFolder, "Upgrade");
 
         List<string> fileList = Directory.GetFiles(inputFolder).ToList();
 
@@ -59,6 +60,7 @@ public class FileUpgraderTest : MonoBehaviour
     {
         replacementPairs = new List<ReplacementPair>();
 
+        //Identifiers
         replacementPairs.Add(new ReplacementType(original: "Table Float", replacement: "TableFloat"));
         replacementPairs.Add(new ReplacementType(original: "Rectangular roof", replacement: "RectangularRoof"));
         replacementPairs.Add(new ReplacementType(original: "Floor", replacement: "FloorController"));
@@ -80,6 +82,24 @@ public class FileUpgraderTest : MonoBehaviour
         replacementPairs.Add(new ReplacementType(original: "Horizontal arc", replacement: "HorizontalArc"));
         replacementPairs.Add(new ReplacementType(original: "Virtual block", replacement: "VirtualBlock"));
         replacementPairs.Add(new ReplacementType(original: "Node wall", replacement: "NodeWall"));
+        
+        /*
+        Not yet handeled:
+        
+        Rectangular roof:
+        First Block Position -> First position
+        Second Block Position -> Second position
+        Because of conflict with Non-cardinal wall
+
+        */
+
+        //Materials
+        replacementPairs.Add(new ReplacementPair(original: "Plaster", replacement: "PolyHaven-beige_wall_001"));
+        replacementPairs.Add(new ReplacementPair(original: "WoodCeiling", replacement: "PolyHaven-old_planks_02"));
+        replacementPairs.Add(new ReplacementPair(original: "StoneBricks", replacement: "PolyHaven-sandstone_blocks_05"));
+        replacementPairs.Add(new ReplacementPair(original: "WoodSolid", replacement: "PolyHaven-plywood"));
+        replacementPairs.Add(new ReplacementPair(original: "WoodPlanks", replacement: "PolyHaven-wood_planks_dirt"));
+        replacementPairs.Add(new ReplacementPair(original: "Roof", replacement: "PolyHaven-roof_09"));
     }
 
     string RunReplaceFunction(string inputString)
