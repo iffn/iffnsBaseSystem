@@ -329,5 +329,21 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
                 }
             }
         }
+
+        public BaseGameObject Clone
+        {
+            get
+            {
+                BaseGameObject returnValue = Instantiate(ResourceLibrary.TryGetTemplateFromStringIdentifier(IdentifierString) as BaseGameObject);
+
+                returnValue.Setup(superObject: SuperObject);
+
+                List<string> json = JSONBuildParameters;
+
+                returnValue.JSONBuildParameters = json;
+
+                return returnValue;
+            }
+        }
     }
 }
