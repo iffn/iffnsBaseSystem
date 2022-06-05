@@ -8,6 +8,18 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
     {
         BaseSupportObject baseSupportObject;
 
+        public bool Failed
+        {
+            get
+            {
+                return baseSupportObject.failed;
+            }
+            set
+            {
+                baseSupportObject.failed = value;
+            }
+        }
+
         public string IdentifierString
         {
             get

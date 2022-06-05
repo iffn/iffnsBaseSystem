@@ -8,6 +8,18 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
     {
         BaseSupportObject baseSupportObject;
 
+        public bool Failed
+        {
+            get
+            {
+                return baseSupportObject.failed;
+            }
+            set
+            {
+                baseSupportObject.failed = value;
+            }
+        }
+
         //[SerializeField] protected MultiMeshManager StaticMeshManager;
         protected MultiMeshManager StaticMeshManager { get; private set; }
         [SerializeField] protected List<MultiMeshManager> DynamicMeshManagers;

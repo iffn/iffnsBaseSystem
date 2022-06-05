@@ -11,6 +11,8 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
 
         IBaseObject SuperObject { get; }
 
+        public bool Failed { get; set; }
+
         List<IBaseObject> SubObjects { get; }
 
         List<string> JSONBuildParameters { get; set; }

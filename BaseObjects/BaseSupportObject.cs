@@ -6,6 +6,8 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
 {
     public class BaseSupportObject
     {
+        public bool failed = false;
+
         private IBaseObject linkedBaseObject;
         public IBaseObject LinkedBaseObject
         {
