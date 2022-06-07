@@ -84,7 +84,6 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
         protected abstract string typeName { get; }
         protected abstract string JSONValueString { get; set; }
 
-
         public string Name
         {
             get
@@ -134,12 +133,8 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
         }
     }
 
-
     public class Mailbox
     {
-
-
-
         public enum ValueType
         {
             mailboxLine,
@@ -409,9 +404,7 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
 
                         if (!found)
                         {
-                            string parentName = ObjectHolder.Name;
-
-                            Debug.LogWarning("Error: Mailbox line not found, line = " + parameterLine + " in object " + parentName);
+                            Debug.LogWarning("Error: Mailbox line not found, line = " + parameterLine + " in object " + ObjectHolder.IdentifierString);
 
                             return;
                         }

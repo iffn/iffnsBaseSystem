@@ -17,8 +17,6 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
 
         List<string> JSONBuildParameters { get; set; }
 
-        string Name { get; set; }
-
         List<MailboxLineSingle> SingleMailboxLines { get; }
 
         List<BaseEditButtonFunction> EditButtons { get; }

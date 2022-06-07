@@ -75,7 +75,6 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
             }
         }
 
-
         //Mailbox System
         Mailbox mailbox;
         public Mailbox Mailbox
@@ -83,21 +82,6 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
             get
             {
                 return mailbox;
-            }
-        }
-
-        //Build parameters
-        protected MailboxLineString buildParameterName;
-
-        public string Name
-        {
-            get
-            {
-                return buildParameterName.Val;
-            }
-            set
-            {
-                buildParameterName.Val = value;
             }
         }
 
@@ -142,7 +126,7 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
         }
 
         //Constructor
-        public BaseSupportObject(IBaseObject baseObject, string name, IBaseObject superObject)
+        public BaseSupportObject(IBaseObject baseObject, IBaseObject superObject)
         {
             linkedBaseObject = baseObject;
 
@@ -150,8 +134,6 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
             mailbox = new Mailbox(linkedBaseObject);
             //subObjects = new List<IBaseObject>();
             this.superObject = superObject;
-
-            buildParameterName = new MailboxLineString("Name", Mailbox, Mailbox.ValueType.buildParameter);
 
             editButtonFunctions = new List<BaseEditButtonFunction>();
         }

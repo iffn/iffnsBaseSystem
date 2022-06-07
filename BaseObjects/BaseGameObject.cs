@@ -22,6 +22,8 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
 
         //[SerializeField] protected MultiMeshManager StaticMeshManager;
         protected MultiMeshManager StaticMeshManager { get; private set; }
+        protected MailboxLineString buildParameterName;
+
         [SerializeField] protected List<MultiMeshManager> DynamicMeshManagers;
 
         public List<UnityMeshManager> UnmanagedMeshes = new List<UnityMeshManager>();
@@ -62,11 +64,11 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
         {
             get
             {
-                return baseSupportObject.Name;
+                return buildParameterName.Val;
             }
             set
             {
-                baseSupportObject.Name = value;
+                buildParameterName.Val = value;
             }
         }
 
@@ -109,8 +111,10 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
         {
             if (baseSupportObject == null)
             {
-                baseSupportObject = new BaseSupportObject(baseObject: this, name: "", superObject: superObject);
+                baseSupportObject = new BaseSupportObject(baseObject: this, superObject: superObject);
             }
+
+            
 
             if (superObject != null)
             {
@@ -139,10 +143,10 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
                     {
                         currentPartent = currentPartent.SuperObject;
                     }
-
-
                 }
             }
+
+            buildParameterName = new MailboxLineString(name: "Name", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
 
             if (StaticMeshManager == null)
             {

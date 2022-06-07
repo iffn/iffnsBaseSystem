@@ -44,18 +44,6 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
             }
         }
 
-        public string Name
-        {
-            get
-            {
-                return baseSupportObject.Name;
-            }
-            set
-            {
-                baseSupportObject.Name = value;
-            }
-        }
-
         public IBaseObject SuperObject
         {
             get
@@ -108,13 +96,8 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
         {
             if (baseSupportObject == null)
             {
-                baseSupportObject = new BaseSupportObject(baseObject: this, name: "", superObject: superObject);
+                baseSupportObject = new BaseSupportObject(baseObject: this, superObject: superObject);
             }
-        }
-
-        virtual protected void SetBaseBuildParameters(string name)
-        {
-            baseSupportObject.Name = name;
         }
 
         public abstract void ApplyBuildParameters();
