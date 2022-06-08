@@ -26,19 +26,19 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
 
                 radiusValue.Val = offset.magnitude;
 
-                LinkedObject.ApplyBuildParameters();
+                //LinkedOrganizer.ApplyBuildParameters();
             }
         }
 
-        public void Setup(BaseGameObject linkedObject, MailboxLineRanged radiusValue, Vector3 localCenter, Vector3 axis)
+        public void Setup(ModificationOrganizer linkedOrganizer, MailboxLineRanged radiusValue, Vector3 localCenter, Vector3 axis)
         {
-            base.setup(linkedObject: linkedObject);
+            base.setup(linkedOrganizer: linkedOrganizer);
 
             this.radiusValue = radiusValue;
             this.localCenter = localCenter;
             this.axis = axis;
 
-            transform.parent = linkedObject.transform;
+            transform.parent = linkedOrganizer.LinkedObject.transform;
             transform.localPosition = Vector3.zero;
 
             if (axis != Vector3.up)

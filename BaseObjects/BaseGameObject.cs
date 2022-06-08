@@ -6,7 +6,16 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
 {
     public abstract class BaseGameObject : MonoBehaviour, IBaseObject
     {
+        //Unity assignments
+        [SerializeField] protected List<MultiMeshManager> DynamicMeshManagers;
+
+
+        //Runtime parameters
+        protected MailboxLineString buildParameterName;
         BaseSupportObject baseSupportObject;
+        public List<UnityMeshManager> UnmanagedMeshes = new List<UnityMeshManager>();
+        //public ModificationOrganizer LinkedOrganizer { get; private set; }
+
 
         public bool Failed
         {
@@ -20,13 +29,7 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
             }
         }
 
-        //[SerializeField] protected MultiMeshManager StaticMeshManager;
         protected MultiMeshManager StaticMeshManager { get; private set; }
-        protected MailboxLineString buildParameterName;
-
-        [SerializeField] protected List<MultiMeshManager> DynamicMeshManagers;
-
-        public List<UnityMeshManager> UnmanagedMeshes = new List<UnityMeshManager>();
 
         public List<TriangleMeshInfo> AllStaticTriangleInfosAsNewList
         {
@@ -107,8 +110,12 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
             -----------------------------
         */
 
+        //protected abstract void SetupModificationOrganizer();
+
         virtual public void Setup(IBaseObject superObject)
         {
+            //SetupModificationOrganizer();
+
             if (baseSupportObject == null)
             {
                 baseSupportObject = new BaseSupportObject(baseObject: this, superObject: superObject);
@@ -260,6 +267,8 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
         }
 
         //Modification Node Stuff
+
+        /*
         List<ModificationNode> ModificationNodes = new List<ModificationNode>();
 
         public virtual void ShowModificationNodes(bool activateCollider)
@@ -289,15 +298,6 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
             foreach (ModificationNode node in ModificationNodes)
             {
                 node.UpdatePosition();
-            }
-        }
-
-        /*
-        public void UpdateNodeSizes()
-        {
-            foreach (ModificationNode node in ModificationNodes)
-            {
-                node.UpdateNodeSize();
             }
         }
         */

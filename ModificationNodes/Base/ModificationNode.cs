@@ -9,12 +9,12 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
         protected readonly float heightOvershoot = 0.01f;
         protected readonly float widthOvershoot = 0.01f;
 
-        public BaseGameObject LinkedObject { get; private set; }
+        public ModificationOrganizer LinkedOrganizer { get; private set; }
 
-        protected virtual void setup(BaseGameObject linkedObject)
+        protected virtual void setup(ModificationOrganizer linkedOrganizer)
         {
-            LinkedObject = linkedObject;
-            linkedObject.AddModificationNode(this);
+            LinkedOrganizer = linkedOrganizer;
+            linkedOrganizer.AddModificationNode(this);
         }
 
         public virtual void Show(bool activateCollider)
