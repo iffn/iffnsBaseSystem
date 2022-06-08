@@ -20,6 +20,24 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
             }
         }
 
+        public void DestroyFailedSubObjects()
+        {
+            for(int i = 0; i < SubObjects.Count; i++)
+            {
+                if (SubObjects[i].Failed)
+                {
+                    //Debug.Log("Destroying " + SubObjects[i].IdentifierString + " because it failed");
+
+                    SubObjects[i].DestroyObject();
+                    i--;
+                }
+                else
+                {
+                    SubObjects[i].DestroyFailedSubObjects();
+                }
+            }
+        }
+
         //[SerializeField] protected MultiMeshManager StaticMeshManager;
         protected MultiMeshManager StaticMeshManager { get; private set; }
         protected MailboxLineString buildParameterName;

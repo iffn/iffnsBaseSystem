@@ -20,6 +20,22 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
             }
         }
 
+        public void DestroyFailedSubObjects()
+        {
+            for (int i = 0; i < SubObjects.Count; i++)
+            {
+                if (SubObjects[i].Failed)
+                {
+                    SubObjects[i].DestroyObject();
+                    i--;
+                }
+                else
+                {
+                    SubObjects[i].DestroyFailedSubObjects();
+                }
+            }
+        }
+
         public string IdentifierString
         {
             get

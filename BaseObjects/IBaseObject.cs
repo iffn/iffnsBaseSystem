@@ -22,6 +22,8 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
         List<BaseEditButtonFunction> EditButtons { get; }
 
         //Functions
+        void DestroyFailedSubObjects();
+
         void ApplyBuildParameters();
 
         void Setup(IBaseObject superObject);
