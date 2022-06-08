@@ -161,6 +161,16 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
             }
         }
 
+        protected void ResetAllMeshes()
+        {
+            StaticMeshManager.Reset();
+
+            foreach (MultiMeshManager manager in DynamicMeshManagers)
+            {
+                manager.Reset();
+            }
+        }
+
         protected void BuildAllMeshes()
         {
             StaticMeshManager.BuildMeshes();
