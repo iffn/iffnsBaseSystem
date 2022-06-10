@@ -36,6 +36,8 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
 
         void DestroyObject();
 
+        void DestroyObjectWithoutRemove();
+
         void RemoveSubObject(IBaseObject subObject);
     }
 }

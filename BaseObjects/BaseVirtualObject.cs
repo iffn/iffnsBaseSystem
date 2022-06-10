@@ -153,12 +153,17 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
 
         public virtual void DestroyObject()
         {
-            foreach (IBaseObject subObject in SubObjects)
-            {
-                subObject.DestroyObject();
-            }
+            DestroyObjectWithoutRemove();
 
             SuperObject.RemoveSubObject(this);
+        }
+
+        public void DestroyObjectWithoutRemove()
+        {
+            foreach (IBaseObject subObject in SubObjects)
+            {
+                subObject.DestroyObjectWithoutRemove();
+            }
         }
 
         public abstract void ResetObject();

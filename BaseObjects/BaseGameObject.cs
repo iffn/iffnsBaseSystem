@@ -254,10 +254,20 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
         {
             foreach (IBaseObject subObject in SubObjects)
             {
-                subObject.DestroyObject();
+                subObject.DestroyObjectWithoutRemove();
             }
 
             SuperObject.RemoveSubObject(this);
+
+            Destroy(gameObject);
+        }
+
+        public void DestroyObjectWithoutRemove()
+        {
+            foreach (IBaseObject subObject in SubObjects)
+            {
+                subObject.DestroyObjectWithoutRemove();
+            }
 
             Destroy(gameObject);
         }
