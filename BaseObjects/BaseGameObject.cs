@@ -22,19 +22,23 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
 
         public void DestroyFailedSubObjects()
         {
-            for(int i = 0; i < SubObjects.Count; i++)
-            {
-                if (SubObjects[i].Failed)
-                {
-                    //Debug.Log("Destroying " + SubObjects[i].IdentifierString + " because it failed");
+            List<IBaseObject> failedObjects = new();
 
-                    SubObjects[i].DestroyObject();
-                    i--;
+            foreach(IBaseObject subObj in SubObjects)
+            {
+                if (subObj.Failed)
+                {
+                    failedObjects.Add(subObj);
                 }
                 else
                 {
-                    SubObjects[i].DestroyFailedSubObjects();
+                    subObj.DestroyFailedSubObjects();
                 }
+            }
+
+            foreach(IBaseObject failedObj in failedObjects)
+            {
+                failedObj.DestroyObject();
             }
         }
 
