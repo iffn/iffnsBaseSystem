@@ -250,7 +250,7 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
             CurrentMailbox.RemoveSubObject(subObject);
         }
 
-        public void DestroyObject()
+        public virtual void DestroyObject()
         {
             foreach (IBaseObject subObject in SubObjects)
             {
