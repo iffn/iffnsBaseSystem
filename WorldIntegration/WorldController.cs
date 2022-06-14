@@ -41,5 +41,37 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
 
         // Update is called once per frame
         protected abstract void Update();
+
+        public static class LayerManager
+        {
+            public enum Layers
+            {
+                Default,
+                TransparentFX,
+                IgnoreRaycast,
+                Undefined,
+                Water,
+                UI,
+                SelectOnly,
+                NoSelection
+            }
+
+            public static int GetLayerNumber(Layers layer)
+            {
+                return (int)layer;
+            }
+
+            public static int SelectionLayerMask
+            {
+                get
+                {
+                    int returnValue = (1 << GetLayerNumber(Layers.SelectOnly)) | (1 << GetLayerNumber(Layers.Default));
+
+                    //Debug.Log(System.Convert.ToString(returnValue, 2).PadLeft(32, '0'));
+
+                    return returnValue;
+                }
+            }
+        }
     }
 }
