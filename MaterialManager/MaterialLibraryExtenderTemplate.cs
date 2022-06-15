@@ -7,6 +7,8 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
 {
     public abstract class MaterialLibraryExtenderTemplate : MonoBehaviour
     {
+        public string LibraryInfoText;
+
         public abstract Dictionary<string, MaterialManager> MaterialManagerLibary { get; }
 
         public abstract List<Material> AllMaterials { get; }
