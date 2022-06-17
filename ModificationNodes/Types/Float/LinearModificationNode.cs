@@ -47,7 +47,7 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
             }
         }
 
-        public override bool ColliderActivationState
+        protected override bool NodeColliderState
         {
             set
             {

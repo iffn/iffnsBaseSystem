@@ -31,7 +31,16 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
             gameObject.SetActive(false);
         }
 
-        public abstract bool ColliderActivationState { set; }
+        public bool ColliderActivationState
+        {
+            set
+            {
+                LinkedObject.ColliderActivationState = value;
+                NodeColliderState = value;
+            }
+        }
+
+        protected abstract bool NodeColliderState { set; }
 
         public abstract void UpdatePosition();
 
