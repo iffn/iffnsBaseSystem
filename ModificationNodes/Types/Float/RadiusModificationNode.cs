@@ -9,6 +9,7 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
         MailboxLineRanged radiusValue;
         Vector3 localCenter;
         Vector3 axis;
+        Vector3 currentDirection;
 
         public override Vector3 AbsolutePosition
         {
@@ -25,6 +26,8 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
                 offset = new Vector3(offset.x, 0, offset.z); //ToDo: Do it relative to axis instad of just up
 
                 radiusValue.Val = offset.magnitude;
+
+                currentDirection = offset.normalized;
 
                 LinkedObject.ApplyBuildParameters();
             }
@@ -57,7 +60,7 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
 
         public override void UpdatePosition()
         {
-
+            transform.localPosition = localCenter + currentDirection * radiusValue.Val;
         }
     }
 }
