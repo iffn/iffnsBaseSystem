@@ -35,6 +35,12 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
         {
             set
             {
+                if (LinkedObject == null)
+                {
+                    //Debug.LogWarning("Setup not run on " + transform.name);
+                    return;
+                }
+
                 LinkedObject.ColliderActivationState = value;
                 NodeColliderState = value;
             }
