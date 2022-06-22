@@ -299,8 +299,8 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
                     JsonLineHelper.JsonStringValue typeFormat = new(name: "Type", value: identifier);
                     JsonLineHelper.JsonStringValue versionFormat = new(name: "Version", value: version);
 
-                    returnList.Add(typeFormat.JsonString + ",");
-                    returnList.Add(versionFormat.JsonString + ",");
+                    returnList.Add(MyStringComponents.tab + typeFormat.JsonString + ",");
+                    returnList.Add(MyStringComponents.tab + versionFormat.JsonString + ",");
 
                     foreach(SaveObjectInfo saveObjectInfo in saveObjects)
                     {
