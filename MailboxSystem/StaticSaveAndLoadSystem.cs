@@ -359,28 +359,6 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
             return allLines;
         }
 
-        public static IBaseObject LoadBaseObjectIntoSuperObject(string completeFileLocation, IBaseObject superObject)
-        {
-            List<string> allLines = GetJSONStringFromFileLocation(completeFileLocation: completeFileLocation);
-
-            IBaseObject returnObject = LoadBaseObjectIntoSuperObject(RawJSONString: allLines, superObject: superObject);
-
-            return returnObject;
-        }
-
-        public static IBaseObject LoadBaseObjectIntoSuperObject(List<string> RawJSONString, IBaseObject superObject)
-        {
-            RawJSONString = CleanupJSONStringForLoading(RawJSONString);
-
-            //remove first and last line because they are {}
-            RawJSONString.RemoveAt(0);
-            RawJSONString.RemoveAt(RawJSONString.Count - 1);
-
-            IBaseObject returnObject = GetFullObjectFromJSONString(JSONString: RawJSONString, superObject: superObject);
-
-            return returnObject;
-        }
-
         public static void LoadBaseObjectParametersToExistingObject(List<string> RawJSONString, IBaseObject baseObject)
         {
             RawJSONString = CleanupJSONStringForLoading(RawJSONString);
@@ -428,6 +406,8 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
             }
 
             IBaseObject returnObject = ResourceLibrary.GetObjectFromStringIdentifier(identifier: firstLine.ValueString, superObject: superObject);
+
+            if (returnObject == null) return null;
 
             JSONString.RemoveAt(0);
 

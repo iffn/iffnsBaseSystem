@@ -12,7 +12,7 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
 
         IBaseObject subObject;
 
-        IBaseObject superObject;
+        readonly IBaseObject superObject;
 
         public IBaseObject SubObject
         {
@@ -82,6 +82,8 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
             set
             {
                 subObject = StaticSaveAndLoadSystem.GetFullObjectFromJSONString(JSONString: value, superObject: superObject);
+
+                if (subObject == null) superObject.Failed = true;
             }
         }
     }
@@ -264,9 +266,12 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
                         {
                             IBaseObject subObject = StaticSaveAndLoadSystem.GetFullObjectFromJSONString(JSONString: SubJSONList, superObject: superObject);
 
-                            if (subObjects.Contains(subObject) == false)
+                            if(subObject != null)
                             {
-                                subObjects.Add(subObject);
+                                if (subObjects.Contains(subObject) == false)
+                                {
+                                    subObjects.Add(subObject);
+                                }
                             }
 
                             SubJSONList.Clear();

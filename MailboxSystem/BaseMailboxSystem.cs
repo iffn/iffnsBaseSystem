@@ -405,7 +405,7 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
                         if (!found)
                         {
                             Debug.LogWarning("Error: Mailbox line not found, line = " + parameterLine + " in object " + ObjectHolder.IdentifierString);
-
+                            ObjectHolder.Failed = true;
                             return;
                         }
                     }
