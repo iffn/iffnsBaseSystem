@@ -129,7 +129,7 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
         //Find file
         public static List<string> GetFileListFromLocation(string Type, string completeFileLocation, string fileEnding)
         {
-            List<string> returnList = new List<string>();
+            List<string> returnList = new();
             List<string> fileList = Directory.GetFiles(completeFileLocation).ToList();
 
             StreamReader reader;
@@ -198,9 +198,7 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
                     return;
                 }
 
-                JsonLineHelper.JsonStringValue typeFormat = JsonLineHelper.JsonValue.FromJsonString(jsonString: jsonString[1]) as JsonLineHelper.JsonStringValue;
-
-                if (typeFormat == null)
+                if (JsonLineHelper.JsonValue.FromJsonString(jsonString: jsonString[1]) is not JsonLineHelper.JsonStringValue typeFormat)
                 {
                     IsValid = false;
                     return;
@@ -422,7 +420,7 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
         public static IBaseObject GetFullObjectFromJSONString(List<string> JSONString, IBaseObject superObject)
         {
             //Assumption: String list between {} including Type without \t, any {}[] on different lines
-            SingleStringComponents firstLine = new SingleStringComponents();
+            SingleStringComponents firstLine = new();
             firstLine.JSONString = JSONString[0];
             if (!firstLine.IsValid || firstLine.ValueName != "Type")
             {
