@@ -51,7 +51,25 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
 
         public static FullLoadFileInfo GetFileInfoFromFileLocation(string completeFileLocation, string fileEnding)
         {
-            List<string> allLines = File.ReadAllLines(completeFileLocation).OfType<string>().ToList();
+            //allLines = File.ReadAllLines(completeFileLocation).OfType<string>().ToList();
+            
+            //System.Diagnostics.Stopwatch stopwatch = new();
+
+            List<string> allLines = new();
+
+            //stopwatch.Start();
+            using(StreamReader sr = new(completeFileLocation)) //0.136s for Chateau
+            {
+                while (true)
+                {
+                    string currentLine = sr.ReadLine();
+                    if (currentLine == null) break;
+                    allLines.Add(currentLine);
+                }
+            }
+            //stopwatch.Stop();
+
+            //Debug.Log(stopwatch.Elapsed.TotalSeconds);
 
             int slashLocation = completeFileLocation.LastIndexOfAny(new char[] { MyStringComponents.slash, MyStringComponents.backslash });
 
