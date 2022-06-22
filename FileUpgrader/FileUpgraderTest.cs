@@ -69,7 +69,8 @@ public class FileUpgraderTest : MonoBehaviour
         replacementPairs.Add(new ReplacementType(original: "Circular roof", replacement: "CircularRoof"));
         replacementPairs.Add(new ReplacementType(original: "Railing linear", replacement: "RailingLinear"));
         replacementPairs.Add(new ReplacementType(original: "Chair Grid", replacement: "ChairGrid"));
-        replacementPairs.Add(new ReplacementType(original: "Building", replacement: "HumanBuildingController"));
+        replacementPairs.Add(new ReplacementType(original: "Building", replacement: "CastleController"));
+        replacementPairs.Add(new ReplacementType(original: "HumanBuildingController", replacement: "CastleController"));
         replacementPairs.Add(new ReplacementType(original: "Non-cardinal wall", replacement: "NonCardinalWall"));
         replacementPairs.Add(new ReplacementType(original: "Bed Grid", replacement: "BedGrid"));
         replacementPairs.Add(new ReplacementType(original: "Bed Float", replacement: "BedFloat"));
