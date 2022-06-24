@@ -257,6 +257,13 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
                 subObject.DestroyObjectWithoutRemove();
             }
 
+            //Destroy meshes to avoid memory leak
+            StaticMeshManager.DestroyMeshes();
+            foreach(MultiMeshManager manager in DynamicMeshManagers)
+            {
+                manager.DestroyMeshes();
+            }
+
             SuperObject.RemoveSubObject(this);
 
             Destroy(gameObject);
