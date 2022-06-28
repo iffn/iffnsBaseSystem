@@ -443,5 +443,23 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
 
             return returnObject;
         }
+
+        public static void OpenFileLocationInExplorer(string folderPath)
+        {
+            if (Directory.Exists(folderPath))
+            {
+                System.Diagnostics.Process.Start("explorer.exe", folderPath);
+
+                /*
+                System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo
+                {
+                    Arguments = folderPath,
+                    FileName = "explorer.exe"
+                };
+
+                System.Diagnostics.Process.Start(startInfo);
+                */
+            }
+        }
     }
 }
