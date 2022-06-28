@@ -340,9 +340,19 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
 
         public static void SaveLinesTextToFile(List<string> fileContent, string completeFileLocation)
         {
+            using (StreamWriter sw = new StreamWriter(completeFileLocation))
+            {
+                foreach(string line in fileContent)
+                {
+                    sw.WriteLine(line);
+                }
+            }
+
+            /*
             string outputText = string.Join(separator: MyStringComponents.newLine, values: fileContent); //Very fast, takes about 2ms for 13k lines
 
             File.WriteAllText(completeFileLocation, outputText);
+            */
         }
         
 
