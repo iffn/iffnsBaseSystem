@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Globalization;
 
 namespace iffnsStuff.iffnsBaseSystemForUnity
 {
@@ -22,7 +23,9 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
             }
             set
             {
-                Val = int.Parse(value);
+                int newValue = StringHelper.ConvertStringToInt(value, globalFormat: true, out bool worked);
+
+                if (worked) Val = newValue;
             }
         }
 
@@ -140,7 +143,6 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
                 {
                     return MyStringComponents.quote + ValString + MyStringComponents.quote;
                 }
-
             }
             set
             {
@@ -159,7 +161,9 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
                 }
                 else
                 {
-                    Val = int.Parse(value);
+                    int newValue = StringHelper.ConvertStringToInt(value, globalFormat: true, out bool worked);
+
+                    if (worked) Val = newValue;
                 }
 
             }
@@ -235,13 +239,13 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
                 }
                 else if (value.Equals("0")
                 || value.Equals("false")
-                || value.Equals(""))
+                || value.Equals("False"))
                 {
                     Val = false;
                 }
                 else
                 {
-                    Debug.Log("Error: Boolean input value of " + Name + " not detected. String value = " + value);
+                    Debug.LogWarning($"Error: Boolean input value of {Name} not detected. String value = {value}");
                 }
             }
         }
@@ -272,7 +276,9 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
             }
             set
             {
-                Val = float.Parse(value);
+                float newValue = StringHelper.ConvertStringToFloat(value, globalFormat: true, out bool worked);
+
+                if (worked) Val = newValue;
             }
         }
 
@@ -404,11 +410,13 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
         {
             get
             {
-                return "[" + Val.x + ", " + Val.y + ", " + Val.z + "]";
+                return $"[{Val.x}, {Val.y}, {Val.z}]";
             }
             set
             {
-                Val = FileEditor.ConvertJSONStringToVector3(value);
+                Vector3 newValue = JsonLineHelper.ConvertJSONStringToVector3(value, globalFormat: true, out bool worked);
+
+                if(worked) Val = newValue;
             }
         }
 
@@ -440,11 +448,13 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
         {
             get
             {
-                return "[" + Val.x + ", " + Val.y + "]";
+                return $"[{Val.x}, {Val.y}]";
             }
             set
             {
-                Val = FileEditor.ConvertJSONStringToVector2Int(value);
+                Vector2Int newValue = JsonLineHelper.ConvertJSONStringToVector2Int(value, out bool worked);
+
+                if (worked) Val = newValue;
             }
         }
 
@@ -474,11 +484,13 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
         {
             get
             {
-                return "[" + Val.x + ", " + Val.y + "]";
+                return $"[{Val.x}, {Val.y}]";
             }
             set
             {
-                Val = FileEditor.ConvertJSONStringToVector2(value);
+                Vector2 newValue = JsonLineHelper.ConvertJSONStringToVector2(value, out bool worked);
+
+                if (worked) Val = newValue;
             }
         }
 
@@ -509,11 +521,13 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
         {
             get
             {
-                return "[" + Val.x + ", " + Val.y + ", " + Val.z + ", " + Val.w + "]";
+                return $"[{Val.x}, {Val.y}, {Val.z}, {Val.w}]";
             }
             set
             {
-                Val = FileEditor.ConvertJSONStringToQuaternion(value);
+                Quaternion newValue = JsonLineHelper.ConvertJSONStringToQuaternion(value, out bool worked);
+
+                if (worked) Val = newValue;
             }
         }
 
@@ -544,11 +558,13 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
         {
             get
             {
-                return "[" + Val.r + ", " + Val.g + ", " + Val.b + ", " + Val.a + "]";
+                return $"[{Val.r}, {Val.g}, {Val.b}, {Val.a}]";
             }
             set
             {
-                Val = FileEditor.ConvertJSONStringToColor(value);
+                Color newValue = JsonLineHelper.ConvertJSONStringToColor(value, out bool worked);
+
+                if (worked) Val = newValue;
             }
         }
 
@@ -594,8 +610,7 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
             {
                 val = value;
 
-                if (val.a > maxAlpha) val.a = maxAlpha;
-                if (val.a < minAlpha) val.a = minAlpha;
+                val.a = Mathf.Clamp(value.a, min: MinAlpha, max: MaxAlpha);
             }
         }
 
