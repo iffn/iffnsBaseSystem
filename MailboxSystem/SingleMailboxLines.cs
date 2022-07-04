@@ -272,7 +272,7 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
         {
             get
             {
-                return Val.ToString();
+                return Val.ToString(CultureInfo.InvariantCulture);
             }
             set
             {
@@ -410,7 +410,7 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
         {
             get
             {
-                return $"[{Val.x}, {Val.y}, {Val.z}]";
+                return $"[{Val.x.ToString(CultureInfo.InvariantCulture)}, {Val.y.ToString(CultureInfo.InvariantCulture)}, {Val.z.ToString(CultureInfo.InvariantCulture)}]";
             }
             set
             {
@@ -448,7 +448,7 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
         {
             get
             {
-                return $"[{Val.x}, {Val.y}]";
+                return $"[{Val.x.ToString(CultureInfo.InvariantCulture)}, {Val.y.ToString(CultureInfo.InvariantCulture)}]";
             }
             set
             {
@@ -484,7 +484,7 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
         {
             get
             {
-                return $"[{Val.x}, {Val.y}]";
+                return $"[{Val.x.ToString(CultureInfo.InvariantCulture)}, {Val.y.ToString(CultureInfo.InvariantCulture)}]";
             }
             set
             {
@@ -521,7 +521,7 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
         {
             get
             {
-                return $"[{Val.x}, {Val.y}, {Val.z}, {Val.w}]";
+                return $"[{Val.x.ToString(CultureInfo.InvariantCulture)}, {Val.y.ToString(CultureInfo.InvariantCulture)}, {Val.z.ToString(CultureInfo.InvariantCulture)}, {Val.w.ToString(CultureInfo.InvariantCulture)}]";
             }
             set
             {
@@ -558,7 +558,7 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
         {
             get
             {
-                return $"[{Val.r}, {Val.g}, {Val.b}, {Val.a}]";
+                return $"[{Val.r.ToString(CultureInfo.InvariantCulture)}, {Val.g.ToString(CultureInfo.InvariantCulture)}, {Val.b.ToString(CultureInfo.InvariantCulture)}, {Val.a.ToString(CultureInfo.InvariantCulture)}]";
             }
             set
             {
