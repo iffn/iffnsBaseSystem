@@ -414,7 +414,7 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
             }
             set
             {
-                Vector3 newValue = JsonLineHelper.ConvertJSONStringToVector3(value, globalFormat: true, out bool worked);
+                Vector3 newValue = JsonLineHelper.ConvertJSONStringToVector3(value, out bool worked);
 
                 if(worked) Val = newValue;
             }
