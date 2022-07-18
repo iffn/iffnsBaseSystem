@@ -19,7 +19,7 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
         {
             get
             {
-                return Val.ToString();
+                return StringHelper.ConvertIntToString(value: Val, globalFormat: true);
             }
             set
             {
@@ -137,7 +137,7 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
             {
                 if (outputIntValueOnly)
                 {
-                    return Val.ToString();
+                    return StringHelper.ConvertIntToString(value: Val, globalFormat: true);
                 }
                 else
                 {
@@ -272,7 +272,7 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
         {
             get
             {
-                return Val.ToString(CultureInfo.InvariantCulture);
+                return StringHelper.ConvertFloatToString(value: Val, globalFormat: true);
             }
             set
             {
@@ -410,7 +410,7 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
         {
             get
             {
-                return $"[{Val.x.ToString(CultureInfo.InvariantCulture)}, {Val.y.ToString(CultureInfo.InvariantCulture)}, {Val.z.ToString(CultureInfo.InvariantCulture)}]";
+                return JsonLineHelper.ConvertVector3ToJSONString(Val);
             }
             set
             {
@@ -448,7 +448,7 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
         {
             get
             {
-                return $"[{Val.x.ToString(CultureInfo.InvariantCulture)}, {Val.y.ToString(CultureInfo.InvariantCulture)}]";
+                return JsonLineHelper.ConvertVector2IntToJSONString(Val);
             }
             set
             {
@@ -484,7 +484,7 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
         {
             get
             {
-                return $"[{Val.x.ToString(CultureInfo.InvariantCulture)}, {Val.y.ToString(CultureInfo.InvariantCulture)}]";
+                return JsonLineHelper.ConvertVector2ToJSONString(Val);
             }
             set
             {
@@ -521,7 +521,7 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
         {
             get
             {
-                return $"[{Val.x.ToString(CultureInfo.InvariantCulture)}, {Val.y.ToString(CultureInfo.InvariantCulture)}, {Val.z.ToString(CultureInfo.InvariantCulture)}, {Val.w.ToString(CultureInfo.InvariantCulture)}]";
+                return JsonLineHelper.ConvertQuaternionToJSONString(Val);
             }
             set
             {
@@ -558,7 +558,7 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
         {
             get
             {
-                return $"[{Val.r.ToString(CultureInfo.InvariantCulture)}, {Val.g.ToString(CultureInfo.InvariantCulture)}, {Val.b.ToString(CultureInfo.InvariantCulture)}, {Val.a.ToString(CultureInfo.InvariantCulture)}]";
+                return JsonLineHelper.ConvertColorToJSONString(Val);
             }
             set
             {

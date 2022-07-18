@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System.Globalization;
 
 namespace iffnsStuff.iffnsBaseSystemForUnity.Tools
 {
@@ -39,13 +40,13 @@ namespace iffnsStuff.iffnsBaseSystemForUnity.Tools
                 case UpDirection.Y:
                     foreach (Vector3 vertex in vertices)
                     {
-                        returnList.Add("v " + -vertex.x + " " + vertex.y + " " + vertex.z);
+                        returnList.Add(GetVertexStringFromVector3(-vertex.x, vertex.y, vertex.z));
                     }
                     break;
                 case UpDirection.Z:
                     foreach (Vector3 vertex in vertices)
                     {
-                        returnList.Add("v " + -vertex.x + " " + vertex.z + " " + vertex.y);
+                        returnList.Add(GetVertexStringFromVector3(-vertex.x, vertex.z, vertex.y));
                     }
                     break;
                 default:
@@ -55,7 +56,7 @@ namespace iffnsStuff.iffnsBaseSystemForUnity.Tools
             //UVs
             foreach (Vector2 uv in uvs)
             {
-                returnList.Add("vt " + uv.x + " " + uv.y + " ");
+                returnList.Add(GetUVStringFromVector2(uv.x, uv.y));
             }
 
             //Faces
@@ -68,11 +69,38 @@ namespace iffnsStuff.iffnsBaseSystemForUnity.Tools
                     int t2 = usedTriangles[i + 1] + 1;
                     int t3 = usedTriangles[i + 2] + 1;
 
-                    returnList.Add("f " + t1 + "/" + t1 + " " + t3 + "/" + t3 + " " + t2 + "/" + t2);
+                    returnList.Add(GetTriangleStringFromTrianglePoints(t1, t3, t2));
+
                 }
             }
 
             return returnList;
+        }
+
+        static string GetVertexStringFromVector3(float x, float y, float z)
+        {
+            string xString = x.ToString("0.#############################", CultureInfo.InvariantCulture);
+            string yString = y.ToString("0.#############################", CultureInfo.InvariantCulture);
+            string zString = z.ToString("0.#############################", CultureInfo.InvariantCulture);
+
+            return $"v {xString} {yString} {zString}";
+        }
+
+        static string GetUVStringFromVector2(float x, float y)
+        {
+            string xString = x.ToString("0.#############################", CultureInfo.InvariantCulture);
+            string yString = y.ToString("0.#############################", CultureInfo.InvariantCulture);
+
+            return $"vt {xString} {yString}";
+        }
+
+        public static string GetTriangleStringFromTrianglePoints(int t1, int t2, int t3)
+        {
+            string t1String = t1.ToString(CultureInfo.InvariantCulture);
+            string t2String = t2.ToString(CultureInfo.InvariantCulture);
+            string t3String = t3.ToString(CultureInfo.InvariantCulture);
+
+            return $"f {t1String}/{t1String} {t2String}/{t2String} {t3String}/{t3String}"; //ToDo: Check int to string conversion
         }
 
         public static List<string> GetObjLines(string meshName, Vector3[] vertices, Vector2[] uvs, int[] triangles, int triangleIndexOffset, UpDirection upDirection)
