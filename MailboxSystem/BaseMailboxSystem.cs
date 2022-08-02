@@ -35,6 +35,13 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
 
             set
             {
+                if(value == null || value.Length == 0)
+                {
+                    Debug.LogWarning("Error when assigning json string: String is empty or null = " + value);
+                    IsValid = false;
+                    return;
+                }
+
                 if (value[0] != '"')
                 {
                     Debug.LogWarning("Error when assigning json string: String does not start with quote. JSon line = " + value);
