@@ -131,6 +131,21 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
             }
         }
 
+        public int LongestStringLength
+        {
+            get
+            {
+                int returnValue = 0;
+
+                foreach(string entry in Entries)
+                {
+                    if(entry.Length > returnValue) returnValue = entry.Length;
+                }
+
+                return returnValue;
+            }
+        }
+
         protected override string JSONValueString
         {
             get
