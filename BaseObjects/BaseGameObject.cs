@@ -193,7 +193,15 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
             }
         }
 
-        protected void BuildAllMeshes()
+        public void GeneratePlanarUVMaps(Transform meshTransform, Transform refernceTransform)
+        {
+            foreach (TriangleMeshInfo info in StaticMeshManager.AllUnusedTriagnleInfosDirectly)
+            {
+                info.GenerateUVMapIfPlanar(meshTransform: meshTransform, refernceTransform: refernceTransform);
+            }
+        }
+
+        protected virtual void BuildAllMeshes()
         {
             StaticMeshManager.BuildMeshes();
 
