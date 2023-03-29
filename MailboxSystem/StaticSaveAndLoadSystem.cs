@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System.Linq;
+using Unity.VisualScripting;
 
 namespace iffnsStuff.iffnsBaseSystemForUnity
 {
@@ -210,7 +211,18 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
 
         public abstract class LoadFileInfo : FileInfo
         {
-            public bool IsValid { get; protected set; } = true;
+            bool valid = true;
+            public bool IsValid
+            {
+                get
+                {
+                    return valid;
+                }
+                set
+                {
+                    valid = value;
+                }
+            }
             public string FileNameWithoutEnding { get; private set; }
 
             public LoadFileInfo(string fileNameWithoutEnding)
@@ -280,6 +292,18 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
 
                 jsonStringCleanedUp.RemoveRange(0, 4);
 
+                while (jsonStringCleanedUp.Count > 0 && string.IsNullOrWhiteSpace(jsonStringCleanedUp[jsonStringCleanedUp.Count - 1]))
+                {
+                    jsonStringCleanedUp.RemoveAt(jsonStringCleanedUp.Count - 1);
+                }
+
+                if(jsonStringCleanedUp.Count == 0)
+                {
+                    IsValid = false;
+                    Debug.LogWarning("Warning: string is not empty");
+                    return;
+                }
+
                 jsonStringCleanedUp.RemoveAt(jsonStringCleanedUp.Count - 1);
 
                 LoadObjectString = jsonStringCleanedUp;
@@ -332,7 +356,7 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
 
                     foreach(SaveObjectInfo saveObjectInfo in saveObjects)
                     {
-                        returnList.Add(MyStringComponents.tab + saveObjectInfo.name + ":");
+                        returnList.Add($"{MyStringComponents.tab}\"{saveObjectInfo.name}\":");
 
                         returnList.Add(MyStringComponents.tab + "{");
                         returnList.AddRange(GetSaveJSONStringFromObject(saveObject: saveObjectInfo.saveObject, tabs: 1));
