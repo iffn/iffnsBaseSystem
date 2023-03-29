@@ -8,6 +8,16 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
 {
     public static class StaticSaveAndLoadSystem
     {
+        public static Dictionary<string, List<string>> internalSaveData = new();
+
+        public static SaveTypes SaveType;
+
+        public enum SaveTypes
+        {
+            FileSystem,
+            InternalStrings
+        }
+
         //Data
         public static string UserFileLocation = Application.streamingAssetsPath;
 
@@ -208,15 +218,15 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
                 FileNameWithoutEnding = fileNameWithoutEnding;
             }
 
-            public void SetBaseInfo(List<string> jsonString)
+            public void SetBaseInfo(List<string> jsonStringList)
             {
-                if (jsonString[0] != "{")
+                if (jsonStringList[0] !="{")
                 {
                     IsValid = false;
                     return;
                 }
 
-                if (JsonLineHelper.JsonValue.FromJsonString(jsonString: jsonString[1]) is not JsonLineHelper.JsonStringValue typeFormat)
+                if (JsonLineHelper.JsonValue.FromJsonString(jsonString: jsonStringList[1]) is not JsonLineHelper.JsonStringValue typeFormat)
                 {
                     IsValid = false;
                     return;
@@ -230,7 +240,7 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
 
                 identifier = typeFormat.value;
 
-                JsonLineHelper.JsonStringValue versionFormat = JsonLineHelper.JsonValue.FromJsonString(jsonString: jsonString[2]) as JsonLineHelper.JsonStringValue;
+                JsonLineHelper.JsonStringValue versionFormat = JsonLineHelper.JsonValue.FromJsonString(jsonString: jsonStringList[2]) as JsonLineHelper.JsonStringValue;
 
                 if (typeFormat == null)
                 {
@@ -354,7 +364,6 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
             File.WriteAllText(completeFileLocation, outputText);
             */
         }
-        
 
         static List<string> GetSaveJSONStringFromObject(IBaseObject saveObject, int tabs)
         {
