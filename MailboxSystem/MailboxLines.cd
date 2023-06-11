@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="iffnsStuff.iffnsBaseSystemForUnity.MailboxLineDistinctUnnamed">
+    <Position X="3.25" Y="14.25" Width="2.5" />
+    <InheritanceLine Type="iffnsStuff.iffnsBaseSystemForUnity.MailboxLineSingle" ManuallyRouted="true">
+      <Path>
+        <Point X="13.5" Y="12.295" />
+        <Point X="13.5" Y="13.866" />
+        <Point X="4.5" Y="13.866" />
+        <Point X="4.5" Y="14.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAEIAAABCQAAAAEAAAQAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Assets\iffnsBaseSystem\MailboxSystem\SingleMailboxLines.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="iffnsStuff.iffnsBaseSystemForUnity.MailboxLineDistinctNamed">
+    <Position X="6" Y="14.25" Width="2.5" />
+    <InheritanceLine Type="iffnsStuff.iffnsBaseSystemForUnity.MailboxLineSingle" ManuallyRouted="true">
+      <Path>
+        <Point X="13.5" Y="12.295" />
+        <Point X="13.5" Y="13.869" />
+        <Point X="7.25" Y="13.869" />
+        <Point X="7.25" Y="14.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAIAgABCAACAAAgAAwAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Assets\iffnsBaseSystem\MailboxSystem\SingleMailboxLines.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="iffnsStuff.iffnsBaseSystemForUnity.MailboxLineBool">
+    <Position X="8.75" Y="14.25" Width="2.5" />
+    <InheritanceLine Type="iffnsStuff.iffnsBaseSystemForUnity.MailboxLineSingle" ManuallyRouted="true">
+      <Path>
+        <Point X="13.5" Y="12.295" />
+        <Point X="13.5" Y="13.866" />
+        <Point X="10" Y="13.866" />
+        <Point X="10" Y="14.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAQAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Assets\iffnsBaseSystem\MailboxSystem\SingleMailboxLines.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="iffnsStuff.iffnsBaseSystemForUnity.MailboxLineRanged">
+    <Position X="1.75" Y="17.75" Width="2.5" />
+    <InheritanceLine Type="iffnsStuff.iffnsBaseSystemForUnity.MailboxLineSingle" ManuallyRouted="true">
+      <Path>
+        <Point X="13.5" Y="12.295" />
+        <Point X="13.5" Y="13.882" />
+        <Point X="3" Y="13.882" />
+        <Point X="3" Y="17.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAEIAAABCQAAAAEAAAQAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Assets\iffnsBaseSystem\MailboxSystem\SingleMailboxLines.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="iffnsStuff.iffnsBaseSystemForUnity.MailboxLineString">
+    <Position X="10.25" Y="17.75" Width="2.5" />
+    <InheritanceLine Type="iffnsStuff.iffnsBaseSystemForUnity.MailboxLineSingle" ManuallyRouted="true">
+      <Path>
+        <Point X="13.5" Y="12.295" />
+        <Point X="13.5" Y="13.885" />
+        <Point X="11.5" Y="13.885" />
+        <Point X="11.5" Y="17.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAQAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Assets\iffnsBaseSystem\MailboxSystem\SingleMailboxLines.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="iffnsStuff.iffnsBaseSystemForUnity.MailboxLineVector3">
+    <Position X="18" Y="14.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAQAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Assets\iffnsBaseSystem\MailboxSystem\SingleMailboxLines.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="iffnsStuff.iffnsBaseSystemForUnity.MailboxLineVector2Int">
+    <Position X="15.25" Y="14.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAQAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Assets\iffnsBaseSystem\MailboxSystem\SingleMailboxLines.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="iffnsStuff.iffnsBaseSystemForUnity.MailboxLineVector2">
+    <Position X="13.75" Y="17.75" Width="2.5" />
+    <InheritanceLine Type="iffnsStuff.iffnsBaseSystemForUnity.MailboxLineSingle" ManuallyRouted="true">
+      <Path>
+        <Point X="13.5" Y="12.295" />
+        <Point X="13.5" Y="13.871" />
+        <Point X="15" Y="13.871" />
+        <Point X="15" Y="17.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAQAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Assets\iffnsBaseSystem\MailboxSystem\SingleMailboxLines.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="iffnsStuff.iffnsBaseSystemForUnity.MailboxLineQuaternion">
+    <Position X="19.5" Y="17.75" Width="2.5" />
+    <InheritanceLine Type="iffnsStuff.iffnsBaseSystemForUnity.MailboxLineSingle" ManuallyRouted="true">
+      <Path>
+        <Point X="13.5" Y="12.295" />
+        <Point X="13.5" Y="13.884" />
+        <Point X="20.75" Y="13.884" />
+        <Point X="20.75" Y="17.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAQAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Assets\iffnsBaseSystem\MailboxSystem\SingleMailboxLines.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="iffnsStuff.iffnsBaseSystemForUnity.MailboxLineColor">
+    <Position X="22.75" Y="14.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEIAAAADAAAAAQEAAUABAAAAAACBAAAAQAAACAAQ=</HashCode>
+      <FileName>Assets\iffnsBaseSystem\MailboxSystem\SingleMailboxLines.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="iffnsStuff.iffnsBaseSystemForUnity.MailboxLineMaterial">
+    <Position X="25.5" Y="14.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAQAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Assets\iffnsBaseSystem\MailboxSystem\SingleMailboxLines.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="iffnsStuff.iffnsBaseSystemForUnity.MailboxLineSingle">
+    <Position X="12.25" Y="8.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAACACAAAAAAAAAIAQAQAACBAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Assets\iffnsBaseSystem\MailboxSystem\BaseMailboxSystem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="iffnsStuff.iffnsBaseSystemForUnity.MailboxLineSingleSubObject">
+    <Position X="17" Y="8.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAgAAAIAAAAACAAEAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>Assets\iffnsBaseSystem\MailboxSystem\BaseObjectMailboxLines.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="iffnsStuff.iffnsBaseSystemForUnity.MailboxLineMultipleSubObject">
+    <Position X="20" Y="8.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAACIAAgAACABEAQAAABEAAAAAgQAAA=</HashCode>
+      <FileName>Assets\iffnsBaseSystem\MailboxSystem\BaseObjectMailboxLines.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="iffnsStuff.iffnsBaseSystemForUnity.Mailbox">
+    <Position X="12.25" Y="2.75" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="iffnsStuff.iffnsBaseSystemForUnity.Mailbox.ValueType">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\iffnsBaseSystem\MailboxSystem\BaseMailboxSystem.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <AssociationLine Name="InputParameters" Type="iffnsStuff.iffnsBaseSystemForUnity.MailboxLineSingle" FixedToPoint="true">
+      <Path>
+        <Point X="12.562" Y="7.309" />
+        <Point X="12.562" Y="8.75" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="BuildParameters" Type="iffnsStuff.iffnsBaseSystemForUnity.MailboxLineSingle" FixedToPoint="true">
+      <Path>
+        <Point X="14.438" Y="7.309" />
+        <Point X="14.438" Y="8.75" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="MultipleSubObjects" Type="iffnsStuff.iffnsBaseSystemForUnity.MailboxLineMultipleSubObject" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="14.75" Y="5" />
+        <Point X="22.156" Y="5" />
+        <Point X="22.156" Y="8.75" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAIAAACAAIAAIAQAAAAAAAAAgAAAAABQEiAAAAAJAAA=</HashCode>
+      <FileName>Assets\iffnsBaseSystem\MailboxSystem\BaseMailboxSystem.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="InputParameters" />
+      <Field Name="BuildParameters" />
+      <Field Name="SingleSubObjects" />
+      <Field Name="MultipleSubObjects" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
