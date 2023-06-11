@@ -29,10 +29,10 @@ namespace iffnsStuff.iffnsBaseSystemForUnity
             }
         }
 
-        int val; //val other word than value since value is a C# keyword
         int max;
         int min = 0;
 
+        int val; //val other word than value since value is a C# keyword
         public int Val //Sepparation between val and Val for correct constructor opperation
         {
             get
